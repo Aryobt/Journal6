@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public Rigidbody2D rb;
+
+   //float fixedDeltaTime = 0;
+
+    public float acceleration;
     public enum FacingDirection
     {
         left, right
@@ -9,20 +14,35 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
-        // The input from the player needs to be determined and
-        // then passed in the to the MovementUpdate which should
-        // manage the actual movement of the character.
-        Vector2 playerInput = new Vector2();
+     
+
+      Vector2 playerInput = new Vector2();
         MovementUpdate(playerInput);
     }
 
     private void MovementUpdate(Vector2 playerInput)
     {
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            rb.linearVelocity += 0.1f * Vector2.left;
+        }
+
+        if (Input.GetKey(KeyCode.D))
+        {
+            rb.linearVelocity += 0.1f * Vector2.right;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        //float fixedDeltaTime = Time.fixedDeltaTime;
+
 
     }
 
