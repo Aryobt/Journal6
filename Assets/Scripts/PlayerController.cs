@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             rb.linearVelocity += 0.1f * Vector2.left;
+           // return FacingDirection.left;
         }
 
         if (Input.GetKey(KeyCode.D))
@@ -57,6 +58,6 @@ public class PlayerController : MonoBehaviour
 
     public FacingDirection GetFacingDirection()
     {
-        return FacingDirection.left;
+        return FacingDirection.right;
     }
 }
