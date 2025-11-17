@@ -35,11 +35,15 @@ public class PlayerController : MonoBehaviour
         {
             rb.linearVelocity += 0.1f * Vector2.left;
 
+          // return FacingDirection.left;
+
+         //  return IsWalking = true;
         }
 
         if (Input.GetKey(KeyCode.D))
         {
             rb.linearVelocity += 0.1f * Vector2.right;
+           // IsWalking = true;
         }
     }
     private void FixedUpdate()
@@ -54,15 +58,17 @@ public class PlayerController : MonoBehaviour
 
     public bool IsWalking()
     {
-        return true;
+        return false;
     }
     public bool IsGrounded()
     {
-        return true;
+        return false;
     }
 
     public FacingDirection GetFacingDirection()
     {
+
+
         return FacingDirection.left;
         //return FacingDirection.right;
     }

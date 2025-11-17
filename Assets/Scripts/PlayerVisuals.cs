@@ -17,10 +17,10 @@ public class PlayerVisuals : MonoBehaviour
         switch (playerController.GetFacingDirection())
         {
             case PlayerController.FacingDirection.left:
-                bodyRenderer.flipX = false;
+                bodyRenderer.flipX = true;
                 break;
             case PlayerController.FacingDirection.right:
-                bodyRenderer.flipX = true;
+                bodyRenderer.flipX = false;
                 break;
         }
     }
