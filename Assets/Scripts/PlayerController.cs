@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D rb;
-
+    public float JumpForce = 150f;
     
 
    //float fixedDeltaTime = 0;
@@ -42,6 +42,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void PlayerJump()
+    {
+        if (Input.GetKey(KeyCode.Space))
+        {
+           // rb.AddForceAtPosition(FacingDirection * JumpForce, acceleration, ForceMode2D.Impulse);
+        }
+    }
     private void FixedUpdate()
     {
         //float fixedDeltaTime = Time.fixedDeltaTime;
