@@ -3,11 +3,11 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D rb;
-   // public float JumpForce = 60f;
-  //  private bool isJump;
-   // private float moveVertical;
+    // public float JumpForce = 60f;
+    //  private bool isJump;
+    // private float moveVertical;
 
-   //float fixedDeltaTime = 0;
+    //float fixedDeltaTime = 0;
 
     public float acceleration;
     public enum FacingDirection
@@ -18,14 +18,14 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-      //  isJump = false;
+        //  isJump = false;
     }
 
     void Update()
     {
-      Vector2 playerInput = new Vector2();
+        Vector2 playerInput = new Vector2();
         MovementUpdate(playerInput);
-       // moveVertical = Input.GetAxisRaw("Vertical");
+        // moveVertical = Input.GetAxisRaw("Vertical");
     }
 
     public void MovementUpdate(Vector2 playerInput)
@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             rb.linearVelocity += 0.1f * Vector2.left;
-           
+
         }
 
         if (Input.GetKey(KeyCode.D))
@@ -44,11 +44,11 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-      
-       // if (!isJump && Input.GetKey(KeyCode.Space))
-       // {
-       //     rb.AddForce(new Vector2(0f, moveVertical * JumpForce), ForceMode2D.Impulse);
-       // }
+
+        // if (!isJump && Input.GetKey(KeyCode.Space))
+        // {
+        //     rb.AddForce(new Vector2(0f, moveVertical * JumpForce), ForceMode2D.Impulse);
+        // }
 
     }
 
@@ -64,15 +64,15 @@ public class PlayerController : MonoBehaviour
     public FacingDirection GetFacingDirection()
     {
         return FacingDirection.left;
-//return FacingDirection.right;
+        //return FacingDirection.right;
     }
 
-   // private void OnTriggerEnter2D(Collider2D collision)
+    // private void OnTriggerEnter2D(Collider2D collision)
     //{
-     //   if ((collision.gameObject.tag == "Platform"))
-     //   {
-     //       isJump = false;
-     //   }
-        
-    }
+    //   if ((collision.gameObject.tag == "Platform"))
+    //   {
+    //       isJump = false;
+    //   }
+
+//}
 }
