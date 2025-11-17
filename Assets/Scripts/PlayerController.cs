@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
 
     //float fixedDeltaTime = 0;
 
+    bool iswalking = false;
+
     public float acceleration;
     public enum FacingDirection
     {
@@ -19,6 +21,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         //  isJump = false;
+       
     }
 
     void Update()
@@ -26,6 +29,7 @@ public class PlayerController : MonoBehaviour
         Vector2 playerInput = new Vector2();
         MovementUpdate(playerInput);
         // moveVertical = Input.GetAxisRaw("Vertical");
+       // iswalking = IsWalking();
     }
 
     public void MovementUpdate(Vector2 playerInput)
@@ -37,14 +41,34 @@ public class PlayerController : MonoBehaviour
 
           // return FacingDirection.left;
 
-         //  return IsWalking = true;
+            iswalking = true;
+            Debug.Log("Moving");
         }
+       
 
         if (Input.GetKey(KeyCode.D))
         {
             rb.linearVelocity += 0.1f * Vector2.right;
-           // IsWalking = true;
+            iswalking = true;
+            Debug.Log("Moving");
         }
+
+        if (Input.GetKeyUp(KeyCode.A))
+        {
+            iswalking = true;
+        }
+        if (Input.GetKeyUp(KeyCode.A))
+        {
+            iswalking = false;
+            Debug.Log("Stopmoving");
+        }
+        if (Input.GetKeyUp(KeyCode.D))
+        {
+            iswalking = false;
+            Debug.Log("Stopmoving");
+        }
+
+
     }
     private void FixedUpdate()
     {
@@ -58,7 +82,7 @@ public class PlayerController : MonoBehaviour
 
     public bool IsWalking()
     {
-        return true;
+        return iswalking;
     }
     public bool IsGrounded()
     {
