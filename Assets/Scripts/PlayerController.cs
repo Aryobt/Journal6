@@ -4,6 +4,8 @@ public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D rb;
 
+    
+
    //float fixedDeltaTime = 0;
 
     public float acceleration;
@@ -25,13 +27,13 @@ public class PlayerController : MonoBehaviour
         MovementUpdate(playerInput);
     }
 
-    private void MovementUpdate(Vector2 playerInput)
+    public void MovementUpdate(Vector2 playerInput)
     {
 
         if (Input.GetKey(KeyCode.A))
         {
             rb.linearVelocity += 0.1f * Vector2.left;
-           // return FacingDirection.left;
+           
         }
 
         if (Input.GetKey(KeyCode.D))
@@ -49,15 +51,15 @@ public class PlayerController : MonoBehaviour
 
     public bool IsWalking()
     {
-        return false;
+        return true;
     }
     public bool IsGrounded()
     {
-        return false;
+        return true;
     }
 
     public FacingDirection GetFacingDirection()
     {
-        return FacingDirection.right;
+        return FacingDirection.left;
     }
 }
