@@ -54,11 +54,6 @@ public class PlayerController : MonoBehaviour
             iswalking = true;
             Debug.Log("Moving");
         }
-
-        if (Input.GetKeyUp(KeyCode.A))
-        {
-            iswalking = true;
-        }
         if (Input.GetKeyUp(KeyCode.A))
         {
             iswalking = false;
@@ -72,9 +67,21 @@ public class PlayerController : MonoBehaviour
     }
     public void falling(Vector2 playerInput)
     {
-        if (rb.linearVelocity.x > -0.6 || rb.linearVelocity.x < 1.85)
+        if (rb.linearVelocity.x < -2.5 && rb.linearVelocity.x > -3.6)
         {
             isgrounded = true;
+            Debug.Log("Fall");
+        }
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            isgrounded = false;
+            Debug.Log("Jump");
+        }
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            isgrounded = true;
+            Debug.Log("Jump");
         }
     }
     private void FixedUpdate()
