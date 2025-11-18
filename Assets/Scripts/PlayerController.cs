@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
         MovementUpdate(playerInput);
         // moveVertical = Input.GetAxisRaw("Vertical");
        // iswalking = IsWalking();
+       falling(playerInput);
     }
 
     public void MovementUpdate(Vector2 playerInput)
@@ -68,8 +69,13 @@ public class PlayerController : MonoBehaviour
             iswalking = false;
             Debug.Log("Stopmoving");
         }
-
-
+    }
+    public void falling(Vector2 playerInput)
+    {
+        if (rb.linearVelocity.x > -0.6 || rb.linearVelocity.x < 1.85)
+        {
+            isgrounded = true;
+        }
     }
     private void FixedUpdate()
     {
