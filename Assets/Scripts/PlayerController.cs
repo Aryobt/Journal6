@@ -3,7 +3,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D rb;
-    // public float JumpForce = 60f;
+     public float JumpForce = 20f;
+    public LayerMask GroundLayer;
+    public BoxCollider2D GroundCollider;
     //  private bool isJump;
     // private float moveVertical;
 
@@ -73,8 +75,9 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Fall");
         }
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, JumpForce);
             isgrounded = false;
             Debug.Log("Jump");
         }
@@ -111,12 +114,12 @@ public class PlayerController : MonoBehaviour
         //return FacingDirection.right;
     }
 
-    // private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //   if ((collision.gameObject.tag == "Platform"))
-    //   {
-    //       isJump = false;
-    //   }
+     public void OnTriggerEnter2D(Collider2D other)
+    {
+      if (GroundLayer == (1 << other .gameObject.layer))
+     {
+          isgrounded = false;
+       }
 
-//}
+}
 }
