@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     //float fixedDeltaTime = 0;
 
     bool iswalking = false;
+    bool isgrounded = false;
 
     public float acceleration;
     public enum FacingDirection
@@ -86,7 +87,7 @@ public class PlayerController : MonoBehaviour
     }
     public bool IsGrounded()
     {
-        return true;
+        return isgrounded;
     }
 
     public FacingDirection GetFacingDirection()
