@@ -7,9 +7,9 @@ public class PlayerController : MonoBehaviour
     public LayerMask GroundLayer;
     public BoxCollider2D GroundCollider;
 
-    public float terminalSpeed = 2f;//
+    public float terminalSpeed;//   
 
-    bool terminalVelocity = false;//
+    // bool terminalVelocity = false;//
     //  private bool isJump;
     // private float moveVertical;
 
@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
         // moveVertical = Input.GetAxisRaw("Vertical");
        // iswalking = IsWalking();
        falling(playerInput);
+        ApplyTerminalSpeed();//
     }
 
     public void MovementUpdate(Vector2 playerInput)
@@ -71,12 +72,6 @@ public class PlayerController : MonoBehaviour
             iswalking = false;
             Debug.Log("Stopmoving");
         }
-
-       // if (terminalSpeed / acceleration)//
-       // {
-        //    terminalVelocity = true;
-        //}
-
     }
     public void falling(Vector2 playerInput)
     {
@@ -107,6 +102,16 @@ public class PlayerController : MonoBehaviour
         // }
 
     }
+
+    private void ApplyTerminalSpeed()//
+    {
+        // If falling, cap the downward speed
+        if (rb.linearVelocity.y < -terminalSpeed)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, -terminalSpeed);
+        }
+    }
+
 
     public bool IsWalking()
     {

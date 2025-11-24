@@ -1707,7 +1707,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   GroundCollider: {fileID: 0}
-  terminalSpeed: 0
+  terminalSpeed: 5
   acceleration: 0.5
 --- !u!4 &1433354315
 Transform:
