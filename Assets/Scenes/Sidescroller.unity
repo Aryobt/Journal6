@@ -1702,11 +1702,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  JumpForce: 40
+  JumpForce: 50
   GroundLayer:
     serializedVersion: 2
     m_Bits: 0
   GroundCollider: {fileID: 0}
+  terminalSpeed: 0
   acceleration: 0.5
 --- !u!4 &1433354315
 Transform:

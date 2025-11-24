@@ -6,6 +6,10 @@ public class PlayerController : MonoBehaviour
      public float JumpForce = 20f;
     public LayerMask GroundLayer;
     public BoxCollider2D GroundCollider;
+
+    public float terminalSpeed = 2f;//
+
+    bool terminalVelocity = false;//
     //  private bool isJump;
     // private float moveVertical;
 
@@ -14,7 +18,7 @@ public class PlayerController : MonoBehaviour
     bool iswalking = false;
     bool isgrounded = false;
 
-    public float acceleration;
+    public float acceleration = 1f;//
     public enum FacingDirection
     {
         left, right
@@ -47,6 +51,7 @@ public class PlayerController : MonoBehaviour
 
             iswalking = true;
             Debug.Log("Moving");
+
         }
        
 
@@ -66,6 +71,12 @@ public class PlayerController : MonoBehaviour
             iswalking = false;
             Debug.Log("Stopmoving");
         }
+
+       // if (terminalSpeed / acceleration)//
+       // {
+        //    terminalVelocity = true;
+        //}
+
     }
     public void falling(Vector2 playerInput)
     {
