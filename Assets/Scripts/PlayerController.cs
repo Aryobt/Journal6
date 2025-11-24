@@ -7,18 +7,17 @@ public class PlayerController : MonoBehaviour
     public LayerMask GroundLayer;
     public BoxCollider2D GroundCollider;
 
-    public float terminalSpeed;//   
+    public float terminalSpeed;
 
-    // bool terminalVelocity = false;//
-    //  private bool isJump;
-    // private float moveVertical;
 
-    //float fixedDeltaTime = 0;
+   // public float coyoteTime = 0.2f;//
+    //private float coyoteTimeCounter;//
+
 
     bool iswalking = false;
     bool isgrounded = false;
 
-    public float acceleration = 1f;//
+    public float acceleration = 1f;
     public enum FacingDirection
     {
         left, right
@@ -27,18 +26,31 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        //  isJump = false;
+    
        
     }
 
     void Update()
     {
         Vector2 playerInput = new Vector2();
+
         MovementUpdate(playerInput);
-        // moveVertical = Input.GetAxisRaw("Vertical");
-       // iswalking = IsWalking();
+ 
        falling(playerInput);
-        ApplyTerminalSpeed();//
+
+        ApplyTerminalSpeed();
+
+        //isgrounded = GroundCollider.IsTouchingLayers(GroundLayer);//
+
+       // if (isgrounded)//
+       // {
+       //     coyoteTimeCounter = coyoteTime;//
+       // }
+       // else
+       // {
+        //    coyoteTimeCounter -= Time.deltaTime;//
+      //  }
+
     }
 
     public void MovementUpdate(Vector2 playerInput)
@@ -81,9 +93,10 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Fall");
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))//&& coyoteTimeCounter > 0//
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, JumpForce);
+           // coyoteTimeCounter = 0f;
             isgrounded = false;
             Debug.Log("Jump");
         }
@@ -96,14 +109,10 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
 
-        // if (!isJump && Input.GetKey(KeyCode.Space))
-        // {
-        //     rb.AddForce(new Vector2(0f, moveVertical * JumpForce), ForceMode2D.Impulse);
-        // }
 
     }
 
-    private void ApplyTerminalSpeed()//
+    private void ApplyTerminalSpeed()
     {
         // If falling, cap the downward speed
         if (rb.linearVelocity.y < -terminalSpeed)
@@ -127,7 +136,6 @@ public class PlayerController : MonoBehaviour
 
 
         return FacingDirection.left;
-        //return FacingDirection.right;
     }
 
      public void OnTriggerEnter2D(Collider2D other)
