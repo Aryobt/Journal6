@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     public float acceleration = 1f;
     public enum FacingDirection
     {
-        left, right
+        left = -1, right = 1
     }
 
     void Start()
